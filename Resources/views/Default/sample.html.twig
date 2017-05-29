@@ -1,0 +1,33 @@
+{% for entitieKey, entitieValue in entities %}
+/**
+ * The {{ entitieKey }} entity.
+ */
+entity {{ entitieKey }} {
+{% for columnKey, columnValue in entitieValue %}
+    {{ columnKey }} {{ columnValue|capitalize }}
+{% endfor %}
+}
+
+{% endfor %}
+
+{% for relationKey, relationValue in relations %}
+{% if relationKey not in 'OneToMany' %}
+/**
+ * The {{ relationKey }} relation.
+ */
+relationship {{ relationKey }} {
+{% for relation in relationValue %}
+{% if relationKey in 'OneToOne' %}
+    {{ relation.sourceEntity }}{{ "{"~relation.fieldName~"}" }} to {{ relation.targetEntity }}{% if not loop.last %},{% endif %}
+{% elseif relationKey in 'ManyToOne' %}
+    {{ relation.sourceEntity }}{{ "{"~relation.fieldName~"}" }} to {{ relation.targetEntity }}{% if not loop.last %},{% endif %}
+{% elseif relationKey in 'OneToMany' %}
+    {{ relation.sourceEntity }} to {{ relation.targetEntity }}{{ "{"~relation.fieldName~"}" }}{% if not loop.last %},{% endif %}
+{% elseif relationKey in 'ManyToMany' %}
+    {{ relation.sourceEntity }}{{ "{"~relation.fieldName~"}" }} to {{ relation.targetEntity }}{% if not loop.last %},{% endif %}
+{% endif %}
+
+{% endfor %}
+}
+{%  endif %}
+{% endfor %}

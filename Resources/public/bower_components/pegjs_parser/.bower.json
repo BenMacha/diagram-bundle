@@ -1,0 +1,13 @@
+{
+  "name": "pegjs_parser",
+  "_cacheHeaders": {
+    "ETag": "\"474d38411fd541f514018866e50088b4fb3a663e\"",
+    "Content-Length": "13375",
+    "Content-Type": "text/plain; charset=utf-8"
+  },
+  "_release": "e-tag:474d38411",
+  "main": "index.js",
+  "_source": "https://raw.githubusercontent.com/jhipster/jhipster-core/v1.3.1/lib/dsl/pegjs_parser.js",
+  "_target": "*",
+  "_originalSource": "https://raw.githubusercontent.com/jhipster/jhipster-core/v1.3.1/lib/dsl/pegjs_parser.js"
+}

@@ -1,0 +1,30 @@
+{
+  "name": "benmacha/diagram-bundle",
+  "description": "Symfony Diagram Bundle",
+  "type": "symfony-bundle",
+  "keywords": ["framework","Symfony","diagram","class","bundle"],
+  "require": {
+    "php": ">=5.3.9",
+    "symfony/symfony": "2.8.*",
+    "patchwork/jsqueeze": "^2.0",
+    "leafo/scssphp": "^0.4.0"
+  },
+  "autoload": {
+    "psr-4": { "benmacha\\diagram\\": "" }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.x-dev"
+    }
+  },
+  "config": {
+    "bin-dir": "bin/"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Ali Ben Macha",
+      "email": "contact@benmacha.tn"
+    }
+  ]
+}
