@@ -5,8 +5,7 @@
   "keywords": ["framework","Symfony","diagram","class","bundle"],
   "require": {
     "php": ">=5.3.9",
-    "symfony/symfony": "2.8.*",
-    "symfony/assetic-bundle": "^2.8"
+    "symfony/symfony": "2.8.*"
   },
   "autoload": {
     "psr-4": { "benmacha\\DiagramBundle\\": "" }
