@@ -14,7 +14,7 @@
 Add the `benmacha/diagram-bundle` package to your `require` section in the `composer.json` file.
 
 ``` bash
-$ composer require benmacha/diagram-bundle dev-master
+$ composer require benmacha/diagram-bundle 1.*
 ```
 
 
