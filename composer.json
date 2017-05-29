@@ -6,11 +6,10 @@
   "require": {
     "php": ">=5.3.9",
     "symfony/symfony": "2.8.*",
-    "patchwork/jsqueeze": "^2.0",
-    "leafo/scssphp": "^0.4.0"
+    "symfony/assetic-bundle": "^2.8"
   },
   "autoload": {
-    "psr-4": { "benmacha\\diagram\\": "" }
+    "psr-4": { "benmacha\\DiagramBundle\\": "" }
   },
   "extra": {
     "branch-alias": {

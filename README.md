@@ -2,18 +2,18 @@
 ### By D'Ali Ben Macha <contact@benmacha.tn> [https://dali.benmacha.tn](https://dali.benmacha.tn) ###
 
 
-[![Latest Stable Version](https://poser.pugx.org/benmacha/mousetracker/version)](https://packagist.org/packages/benmacha/diagramBundle) [![Total Downloads](https://poser.pugx.org/benmacha/mousetracker/downloads)](https://packagist.org/packages/benmacha/mousetracker) [![Latest Unstable Version](https://poser.pugx.org/benmacha/mousetracker/v/unstable)](//packagist.org/packages/benmacha/mousetracker) [![License](https://poser.pugx.org/benmacha/mousetracker/license)](https://packagist.org/packages/benmacha/mousetracker) 
+[![Latest Stable Version](https://poser.pugx.org/benmacha/diagram-bundle/version)](https://packagist.org/packages/benmacha/diagram-bundle) [![Total Downloads](https://poser.pugx.org/benmacha/diagram-bundle/downloads)](https://packagist.org/packages/benmacha/mousetracker) [![Latest Unstable Version](https://poser.pugx.org/benmacha/diagram-bundle/v/unstable)](//packagist.org/packages/benmacha/diagram-bundle) [![License](https://poser.pugx.org/benmacha/diagram-bundle/license)](https://packagist.org/packages/benmacha/diagram-bundle) 
 
 ## Installation ##
 
-Add the `benmacha/mousetracker` package to your `require` section in the `composer.json` file.
+Add the `benmacha/diagram-bundle` package to your `require` section in the `composer.json` file.
 
 ``` bash
-$ composer require benmacha/mousetracker dev-master
+$ composer require benmacha/diagram-bundle dev-master
 ```
 
 
-Add the MouseTrackerBundle to your application's kernel:
+Add the DiagramBundle to your application's kernel:
 
 ``` php
 <?php
@@ -21,7 +21,7 @@ public function registerBundles()
 {
     $bundles = array(
         // ...
-        new benmacha\mousetracker\TrackerBundle(),
+        new benmacha\DiagramBundle\DiagramBundle(),
         // ...
     );
     ...
@@ -31,61 +31,26 @@ public function registerBundles()
 Configure the `Tracker` in your `routing.yml`:
 
 ``` yaml
-mouse_tracker:
-    resource: "@TrackerBundle/Controller/"
+benmacha_diagram:
+    resource: "@DiagramBundle/Controller/"
     type:     annotation
-    prefix:   /tracker
+    prefix:   /diagram
 ```
 
-Configure the `Tracker` in your `config.yml`:
+Configure the `Bundle` in your `config.yml`:
 
 ``` yaml
-imports:
-    - { resource: "@TrackerBundle/Resources/config/services.yml" }
-
-twig:
-    globals:
-        mousetrackerService: @twig_tracker
-        
 assetic:
+    debug:          '%kernel.debug%'
+    use_controller:
+        enabled:              '%kernel.debug%'
+        profiler:             false
     filters:
-        scssphp:
-            formatter: 'Leafo\ScssPhp\Formatter\Compressed'
-        jsqueeze: ~
-```
-
-Create Table:
-
-``` bash
-$ php app/console doctrine:schema:update --force
+        cssrewrite: ~
 ```
 
 Dump js and css file
 
 ``` bash
 $ php app/console assetic:dump
-```
-
-## Usage ##
-
-Configure the `TrackerService` before the end of Body tag in your `*.html.twig` page:
-
-``` twig
-
-<script>
-    /*
-	Javascript Code 
-	*/
-</script>
-
-{{ mousetrackerService.build() }}
-
-<script>
-    /*
-	Javascript Code 
-	*/
-</script>
-</body>
-</html>
-
 ```

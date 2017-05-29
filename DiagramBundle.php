@@ -1,6 +1,6 @@
 <?php
 
-namespace DiagramBundle;
+namespace benmacha\DiagramBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

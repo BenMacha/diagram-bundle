@@ -14,14 +14,16 @@
     '@DiagramBundle/Resources/public/bower_components/magnific-popup/dist/magnific-popup.css'
     '@DiagramBundle/Resources/public/bower_components/icon-font.min/index.css'
     '@DiagramBundle/Resources/public/bower_components/codemirror/lib/codemirror.css'
-    filter='?scssphp' %}
+    filter='cssrewrite'
+%}
     <link rel="stylesheet" href="{{ asset_url }}" />
 {% endstylesheets %}
 {% stylesheets
     '@DiagramBundle/Resources/public/css/codemirror/show-hint-jdl.css'
     '@DiagramBundle/Resources/public/css/codemirror/solarized.jdl.css'
     '@DiagramBundle/Resources/public/css/app.css'
-    filter='?scssphp' %}
+    filter='cssrewrite'
+     %}
     <link rel="stylesheet" href="{{ asset_url }}" />
 {% endstylesheets %}
 </head>
@@ -108,7 +110,7 @@
 '@DiagramBundle/Resources/public/bower_components/codemirror/addon/edit/closebrackets.js'
 '@DiagramBundle/Resources/public/bower_components/codemirror/addon/dialog/dialog.js'
 '@DiagramBundle/Resources/public/bower_components/codemirror/addon/search/searchcursor.js'
-'@DiagramBundle/Resources/public/bower_components/codemirror/addon/hint/show-hint.js' filter="?jsqueeze"  %}
+'@DiagramBundle/Resources/public/bower_components/codemirror/addon/hint/show-hint.js'  %}
 <script src="{{ asset_url }}"></script>
 {% endjavascripts %}
 
@@ -124,7 +126,7 @@
 '@DiagramBundle/Resources/public/js/nomnoml/nomnoml.renderer.custom.js'
 '@DiagramBundle/Resources/public/js/nomnoml/nomnoml.custom.js'
 '@DiagramBundle/Resources/public/js/app.js'
-'@DiagramBundle/Resources/public/js/jdl-editor.directive.js' filter="?jsqueeze"  %}
+'@DiagramBundle/Resources/public/js/jdl-editor.directive.js'   %}
 <script src="{{ asset_url }}"></script>
 {% endjavascripts %}
 </body>
