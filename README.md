@@ -43,20 +43,8 @@ benmacha_diagram:
     prefix:   /diagram
 ```
 
-Configure the `Bundle` in your `config.yml`:
-
-``` yaml
-assetic:
-    debug:          '%kernel.debug%'
-    use_controller:
-        enabled:              '%kernel.debug%'
-        profiler:             false
-    filters:
-        cssrewrite: ~
-```
-
 Dump js and css file
 
 ``` bash
-$ php app/console assetic:dump
+$ php app/console assets:install --symlink
 ```
