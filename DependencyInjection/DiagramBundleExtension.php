@@ -24,9 +24,9 @@ class DiagramBundleExtension extends Extension
    */
   public function load(array $configs, ContainerBuilder $container)
   {
-    $aAsseticBundle = $container->getParameter('assetic.bundles');
+   /* $aAsseticBundle = $container->getParameter('assetic.bundles');
     $aAsseticBundle[] = 'DiagramBundle';
-    $container->setParameter('assetic.bundles', $aAsseticBundle);
+    $container->setParameter('assetic.bundles', $aAsseticBundle);*/
 
   }
 }
