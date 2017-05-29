@@ -26,7 +26,6 @@ public function registerBundles()
 {
     $bundles = array(
         // ...
-        new Symfony\Bundle\AsseticBundle\AsseticBundle(),
         new benmacha\DiagramBundle\DiagramBundle(),
         // ...
     );
