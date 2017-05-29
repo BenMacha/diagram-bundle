@@ -9,21 +9,16 @@
     <meta name="theme-color" content="#282C34">
     <meta name="msapplication-navbutton-color" content="#282C34">
     <meta name="apple-mobile-web-app-status-bar-style" content="#282C34">
-    <title>Rent Car Diagram</title>
-{% stylesheets
-    '@DiagramBundle/Resources/public/bower_components/magnific-popup/dist/magnific-popup.css'
-    '@DiagramBundle/Resources/public/bower_components/icon-font.min/index.css'
-    '@DiagramBundle/Resources/public/bower_components/codemirror/lib/codemirror.css'
-%}
-    <link rel="stylesheet" href="{{ asset_url }}" />
-{% endstylesheets %}
-{% stylesheets
-    '@DiagramBundle/Resources/public/css/codemirror/show-hint-jdl.css'
-    '@DiagramBundle/Resources/public/css/codemirror/solarized.jdl.css'
-    '@DiagramBundle/Resources/public/css/app.css'
-     %}
-    <link rel="stylesheet" href="{{ asset_url }}" />
-{% endstylesheets %}
+    <title>BenMacha Diagram</title>
+
+    <link rel="stylesheet" href="{{ asset('bundles/diagram/bower_components/magnific-popup/dist/magnific-popup.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/diagram/bower_components/icon-font.min/index.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/diagram/bower_components/codemirror/lib/codemirror.css') }}" />
+
+    <link rel="stylesheet" href="{{ asset('bundles/diagram/css/codemirror/show-hint-jdl.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/diagram/css/codemirror/solarized.jdl.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/diagram/css/app.css') }}" />
+
 </head>
 <body ng-app="jdlStudio" ng-controller="workspaceController as app">
 <div class="wrap">
@@ -96,36 +91,30 @@
     var filepathTwig = "{{ path('diagramme_sample') }}"
 </script>
 
-{% javascripts
-'@DiagramBundle/Resources/public/bower_components/lodash/lodash.js'
-'@DiagramBundle/Resources/public/bower_components/jquery/dist/jquery.js'
-'@DiagramBundle/Resources/public/bower_components/magnific-popup/dist/jquery.magnific-popup.js'
-'@DiagramBundle/Resources/public/bower_components/pegjs_parser/index.js'
-'@DiagramBundle/Resources/public/bower_components/angular/angular.js'
-'@DiagramBundle/Resources/public/bower_components/codemirror/lib/codemirror.js'
-'@DiagramBundle/Resources/public/bower_components/codemirror/keymap/sublime.js'
-'@DiagramBundle/Resources/public/bower_components/codemirror/addon/edit/matchbrackets.js'
-'@DiagramBundle/Resources/public/bower_components/codemirror/addon/edit/closebrackets.js'
-'@DiagramBundle/Resources/public/bower_components/codemirror/addon/dialog/dialog.js'
-'@DiagramBundle/Resources/public/bower_components/codemirror/addon/search/searchcursor.js'
-'@DiagramBundle/Resources/public/bower_components/codemirror/addon/hint/show-hint.js'  %}
-<script src="{{ asset_url }}"></script>
-{% endjavascripts %}
+<script src="{{ asset('bundles/diagram/bower_components/lodash/lodash.js') }}"></script>
+<script src="{{ asset('bundles/diagram/bower_components/jquery/dist/jquery.js') }}"></script>
+<script src="{{ asset('bundles/diagram/bower_components/magnific-popup/dist/jquery.magnific-popup.js') }}"></script>
+<script src="{{ asset('bundles/diagram/bower_components/pegjs_parser/index.js') }}"></script>
+<script src="{{ asset('bundles/diagram/bower_components/angular/angular.js') }}"></script>
+<script src="{{ asset('bundles/diagram/bower_components/codemirror/lib/codemirror.js') }}"></script>
+<script src="{{ asset('bundles/diagram/bower_components/codemirror/keymap/sublime.js') }}"></script>
+<script src="{{ asset('bundles/diagram/bower_components/codemirror/addon/edit/matchbrackets.js') }}"></script>
+<script src="{{ asset('bundles/diagram/bower_components/codemirror/addon/edit/closebrackets.js') }}"></script>
+<script src="{{ asset('bundles/diagram/bower_components/codemirror/addon/dialog/dialog.js') }}"></script>
+<script src="{{ asset('bundles/diagram/bower_components/codemirror/addon/search/searchcursor.js') }}"></script>
+<script src="{{ asset('bundles/diagram/bower_components/codemirror/addon/hint/show-hint.js'  ) }}"></script>
 
-{% javascripts
-'@DiagramBundle/Resources/public/js/lib/dagre.min.js'
-'@DiagramBundle/Resources/public/js/codemirror/jdl-hint.js'
-'@DiagramBundle/Resources/public/js/codemirror/codemirror.jdl-mode.js'
-'@DiagramBundle/Resources/public/js/nomnoml/skanaar.canvas.js'
-'@DiagramBundle/Resources/public/js/nomnoml/skanaar.util.js'
-'@DiagramBundle/Resources/public/js/nomnoml/skanaar.vector.js'
-'@DiagramBundle/Resources/public/js/nomnoml/nomnoml.parser.custom.js'
-'@DiagramBundle/Resources/public/js/nomnoml/nomnoml.layouter.custom.js'
-'@DiagramBundle/Resources/public/js/nomnoml/nomnoml.renderer.custom.js'
-'@DiagramBundle/Resources/public/js/nomnoml/nomnoml.custom.js'
-'@DiagramBundle/Resources/public/js/app.js'
-'@DiagramBundle/Resources/public/js/jdl-editor.directive.js'   %}
-<script src="{{ asset_url }}"></script>
-{% endjavascripts %}
+<script src="{{ asset('bundles/diagram/js/lib/dagre.min.js') }}"></script>
+<script src="{{ asset('bundles/diagram/js/codemirror/jdl-hint.js') }}"></script>
+<script src="{{ asset('bundles/diagram/js/codemirror/codemirror.jdl-mode.js') }}"></script>
+<script src="{{ asset('bundles/diagram/js/nomnoml/skanaar.canvas.js') }}"></script>
+<script src="{{ asset('bundles/diagram/js/nomnoml/skanaar.util.js') }}"></script>
+<script src="{{ asset('bundles/diagram/js/nomnoml/skanaar.vector.js') }}"></script>
+<script src="{{ asset('bundles/diagram/js/nomnoml/nomnoml.parser.custom.js') }}"></script>
+<script src="{{ asset('bundles/diagram/js/nomnoml/nomnoml.layouter.custom.js') }}"></script>
+<script src="{{ asset('bundles/diagram/js/nomnoml/nomnoml.renderer.custom.js') }}"></script>
+<script src="{{ asset('bundles/diagram/js/nomnoml/nomnoml.custom.js') }}"></script>
+<script src="{{ asset('bundles/diagram/js/app.js') }}"></script>
+<script src="{{ asset('bundles/diagram/js/jdl-editor.directive.js' ) }}"></script>
 </body>
 </html>
