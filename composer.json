@@ -4,8 +4,8 @@
   "type": "symfony-bundle",
   "keywords": ["framework","Symfony","diagram","class","bundle"],
   "require": {
-    "php": ">=5.3.9",
-    "symfony/symfony": ">=2.8.*"
+    "php": "^5.5.9 || ^7.0",
+    "symfony/framework-bundle": "^2.8 || ^3.0 || ^4.0"
   },
   "autoload": {
     "psr-4": { "benmacha\\DiagramBundle\\": "" }
