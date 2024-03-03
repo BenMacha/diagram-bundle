@@ -1,0 +1,11 @@
+benmacha_home:
+  path: /
+  defaults:
+    _controller: Benmacha\DiagramBundle\Controller\DiagramController::indexAction
+
+
+benmacha_jdl:
+  path: /sample.jdl
+  defaults:
+    _controller: Benmacha\DiagramBundle\Controller\DiagramController::jdlAction
+

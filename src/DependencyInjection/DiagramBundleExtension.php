@@ -1,15 +1,11 @@
 <?php
-namespace benmacha\DiagramBundle\DependencyInjection;
+namespace Benmacha\DiagramBundle\DependencyInjection;
 
+use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
-
-/**
- * Class MouseTrackerExtension
- *
- * @package benmacha\DiagramBundle\DependencyInjection
- */
 class DiagramBundleExtension extends Extension
 {
 
@@ -24,6 +20,9 @@ class DiagramBundleExtension extends Extension
    */
   public function load(array $configs, ContainerBuilder $container)
   {
+
+      $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+      $loader->load('services.yml');
    /* $aAsseticBundle = $container->getParameter('assetic.bundles');
     $aAsseticBundle[] = 'DiagramBundle';
     $container->setParameter('assetic.bundles', $aAsseticBundle);*/

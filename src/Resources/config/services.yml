@@ -1,0 +1,4 @@
+services:
+  Benmacha\DiagramBundle\Controller\DiagramController:
+    arguments: ["@twig"]
+    tags: ['controller.service_arguments']
