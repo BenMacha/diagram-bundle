@@ -1,7 +1,7 @@
 # Symfony Diagram Bundle (DiagramBundle)#
 
 
-[![Latest Stable Version](https://poser.pugx.org/benmacha/diagram-bundle/version)](https://packagist.org/packages/benmacha/diagram-bundle) [![Total Downloads](https://poser.pugx.org/benmacha/diagram-bundle/downloads)](https://packagist.org/packages/benmacha/mousetracker) [![Latest Unstable Version](https://poser.pugx.org/benmacha/diagram-bundle/v/unstable)](//packagist.org/packages/benmacha/diagram-bundle) [![License](https://poser.pugx.org/benmacha/diagram-bundle/license)](https://packagist.org/packages/benmacha/diagram-bundle) 
+[![Latest Stable Version](http://poser.pugx.org/benmacha/diagram-bundle/v)](https://packagist.org/packages/benmacha/diagram-bundle) [![Total Downloads](http://poser.pugx.org/benmacha/diagram-bundle/downloads)](https://packagist.org/packages/benmacha/diagram-bundle) [![Latest Unstable Version](http://poser.pugx.org/benmacha/diagram-bundle/v/unstable)](https://packagist.org/packages/benmacha/diagram-bundle) [![License](http://poser.pugx.org/benmacha/diagram-bundle/license)](https://packagist.org/packages/benmacha/diagram-bundle) [![PHP Version Require](http://poser.pugx.org/benmacha/diagram-bundle/require/php)](https://packagist.org/packages/benmacha/diagram-bundle)
 
 
 "DiagramBundle" is a tool designed to facilitate the drawing of entities in a database and the relationships that connect them.
