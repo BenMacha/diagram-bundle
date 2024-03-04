@@ -1,5 +1,4 @@
 # Symfony Diagram Bundle (DiagramBundle)#
-### By D'Ali Ben Macha <contact@benmacha.tn> [https://benmacha.tn](https://benmacha.tn) ###
 
 
 [![Latest Stable Version](https://poser.pugx.org/benmacha/diagram-bundle/version)](https://packagist.org/packages/benmacha/diagram-bundle) [![Total Downloads](https://poser.pugx.org/benmacha/diagram-bundle/downloads)](https://packagist.org/packages/benmacha/mousetracker) [![Latest Unstable Version](https://poser.pugx.org/benmacha/diagram-bundle/v/unstable)](//packagist.org/packages/benmacha/diagram-bundle) [![License](https://poser.pugx.org/benmacha/diagram-bundle/license)](https://packagist.org/packages/benmacha/diagram-bundle) 
@@ -45,3 +44,4 @@ Dump js and css file
 ``` bash
 $ php app/console assets:install --symlink
 ```
+### By D'Ali Ben Macha <contact@benmacha.tn> [https://benmacha.tn](https://benmacha.tn) ###
