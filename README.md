@@ -2,6 +2,7 @@
 
 
 [![Latest Stable Version](http://poser.pugx.org/benmacha/diagram-bundle/v)](https://packagist.org/packages/benmacha/diagram-bundle) [![Total Downloads](http://poser.pugx.org/benmacha/diagram-bundle/downloads)](https://packagist.org/packages/benmacha/diagram-bundle) [![Latest Unstable Version](http://poser.pugx.org/benmacha/diagram-bundle/v/unstable)](https://packagist.org/packages/benmacha/diagram-bundle) [![License](http://poser.pugx.org/benmacha/diagram-bundle/license)](https://packagist.org/packages/benmacha/diagram-bundle) [![PHP Version Require](http://poser.pugx.org/benmacha/diagram-bundle/require/php)](https://packagist.org/packages/benmacha/diagram-bundle)
+![Support Palestine](https://img.shields.io/badge/🇵🇸%20Support-Palestine-008000?style=flat&logo=data:image/svg+xml;base64,...)
 
 
 "DiagramBundle" is a tool designed to facilitate the drawing of entities in a database and the relationships that connect them.
