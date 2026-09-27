@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale|default('en') }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>{{ title }}</title>
+    <style>
+        html, body { margin: 0; height: 100%; background: #f6f7f9; }
+        @media (prefers-color-scheme: dark) { html, body { background: #0e1116; } }
+        doctrine-diagram { display: block; height: 100vh; height: 100dvh; }
+    </style>
+    {% block diagram_head %}{% endblock %}
+</head>
+<body>
+{{ diagram_widget({height: '100%', heading: title}) }}
+</body>
+</html>

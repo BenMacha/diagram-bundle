@@ -1,0 +1,10 @@
+{# Rendered by the diagram_widget() Twig function. #}
+<script src="{{ asset('bundles/diagram/build/diagram.js') }}?v={{ constant('Benmacha\\DiagramBundle\\DiagramBundle::VERSION') }}" defer></script>
+<doctrine-diagram
+    api="{{ api }}"
+    theme="{{ options.theme }}"
+    {% if options.locale %}locale="{{ options.locale }}"{% endif %}
+    {% if options.manager %}manager="{{ options.manager }}"{% endif %}
+    {% if options.heading %}heading="{{ options.heading }}"{% endif %}
+    style="display:block;height:{{ options.height }}"
+></doctrine-diagram>

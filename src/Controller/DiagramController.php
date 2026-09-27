@@ -2,68 +2,115 @@
 
 namespace Benmacha\DiagramBundle\Controller;
 
-use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\Mapping\ClassMetadata;
+use Benmacha\DiagramBundle\Schema\SchemaExtractor;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use Twig\Environment;
 
+/**
+ * Standalone page + JSON API.
+ *
+ *   GET {prefix}/                studio page (Twig, mounts the <doctrine-diagram> element)
+ *   GET {prefix}/api/managers    entity managers and the database each one is connected to
+ *   GET {prefix}/api/schema      JSON schema of an entity manager (?em=name)
+ */
 class DiagramController
 {
-    private Environment $twig;
+    /** @var Environment */
+    private $twig;
+
+    /** @var SchemaExtractor */
+    private $extractor;
+
+    /** @var string */
+    private $title;
+
+    /** @var string|null */
+    private $accessRole;
+
+    /** @var AuthorizationCheckerInterface|null */
+    private $authorizationChecker;
 
     public function __construct(
-        Environment $twig
+        Environment $twig,
+        SchemaExtractor $extractor,
+        string $title = 'Doctrine Diagram',
+        ?string $accessRole = null,
+        ?AuthorizationCheckerInterface $authorizationChecker = null
     ) {
         $this->twig = $twig;
+        $this->extractor = $extractor;
+        $this->title = $title;
+        $this->accessRole = $accessRole;
+        $this->authorizationChecker = $authorizationChecker;
     }
 
-
-    public function indexAction()
+    public function index(): Response
     {
-        return new Response($this->twig->render('@Diagram/Default/index.html.twig'));
+        if (!$this->granted()) {
+            return new Response('Access denied.', 403, ['Content-Type' => 'text/plain; charset=UTF-8']);
+        }
+
+        return new Response($this->twig->render('@Diagram/page.html.twig', [
+            'title' => $this->title,
+        ]));
     }
 
-    /**
-     * @Route("/sample.jdl", name="diagramme_sample")
-     */
-    public function jdlAction(EntityManagerInterface $entityManager)
+    public function schema(Request $request): JsonResponse
     {
-        $associationType = array(1 => 'OneToOne', 2 => 'ManyToOne', 4 => 'OneToMany', 8 => 'ManyToMany');
-
-        $entities = array();
-        $associations = array();
-
-        $tables = $entityManager->getMetadataFactory()->getAllMetadata();
-
-        /** @var ClassMetadata $table */
-        foreach ($tables as $table) {
-            $tableName = $table->getName();
-            $fileds = array();
-            foreach ($table->getFieldNames() as $fieldName) {
-                $filedMapping = $table->getFieldMapping($fieldName);
-                $fileds[$filedMapping["columnName"]] = $table->getFieldMapping($fieldName)['type'];
-            }
-            $entities[$tableName] = $fileds;
-            foreach ($table->getAssociationMappings() as $association) {
-                $associations[$associationType[$association['type']]][] = array(
-                    'targetEntity' => $association['targetEntity'],
-                    'sourceEntity' => $association['sourceEntity'],
-                    'fieldName' => $association['fieldName'],
-                    'mappedBy' => $association['mappedBy'],
-                );
-            }
-
+        if (!$this->granted()) {
+            return new JsonResponse(['error' => 'Access denied.'], 403);
         }
 
-        foreach ($associationType as $type){
-            if (isset($associations[$type]))
-                $associations[$type] = array_unique($associations[$type], SORT_REGULAR);
+        try {
+            $schema = $this->extractor->extract($this->manager($request));
+        } catch (\InvalidArgumentException $e) {
+            return new JsonResponse(['error' => $e->getMessage()], 404);
+        } catch (\Throwable $e) {
+            return new JsonResponse(['error' => sprintf('Unable to read the mapping: %s', $e->getMessage())], 500);
         }
 
-        return new Response($this->twig->render('@Diagram/Default/sample.html.twig', array(
-            'entities' => $entities,
-            'relations' => $associations,
-        )));
+        $schema['title'] = $this->title;
+
+        return new JsonResponse($schema);
+    }
+
+    public function managers(): JsonResponse
+    {
+        if (!$this->granted()) {
+            return new JsonResponse(['error' => 'Access denied.'], 403);
+        }
+
+        return new JsonResponse([
+            'default' => $this->extractor->getDefaultManagerName(),
+            'managers' => $this->extractor->getManagers(),
+        ]);
+    }
+
+    private function granted(): bool
+    {
+        if (null === $this->accessRole || '' === $this->accessRole) {
+            return true;
+        }
+
+        if (null === $this->authorizationChecker) {
+            return false;
+        }
+
+        try {
+            return $this->authorizationChecker->isGranted($this->accessRole);
+        } catch (\Throwable $e) {
+            // no token / no firewall on this route
+            return false;
+        }
+    }
+
+    private function manager(Request $request): ?string
+    {
+        $manager = $request->query->get('em');
+
+        return null !== $manager && '' !== $manager ? (string) $manager : null;
     }
 }
