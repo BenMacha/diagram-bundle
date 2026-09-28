@@ -1,4 +1,5 @@
 <?php
+
 namespace Benmacha\DiagramBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
@@ -6,26 +7,24 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
-class DiagramBundleExtension extends Extension
+final class DiagramBundleExtension extends Extension
 {
+    public function load(array $configs, ContainerBuilder $container): void
+    {
+        $config = $this->processConfiguration(new Configuration(), $configs);
 
+        $container->setParameter('diagram.entity_managers', $config['entity_managers']);
+        $container->setParameter('diagram.exclude', $config['exclude']);
+        $container->setParameter('diagram.title', $config['title']);
+        $container->setParameter('diagram.metadata', $config['metadata']);
+        $container->setParameter('diagram.access_role', $config['access_role']);
 
-  /**
-   * Loads a specific configuration.
-   *
-   * @param array            $configs   An array of configuration values
-   * @param ContainerBuilder $container A ContainerBuilder instance
-   *
-   * @throws \InvalidArgumentException When provided tag is not defined in this extension
-   */
-  public function load(array $configs, ContainerBuilder $container)
-  {
+        $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader->load('services.yaml');
+    }
 
-      $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
-      $loader->load('services.yml');
-   /* $aAsseticBundle = $container->getParameter('assetic.bundles');
-    $aAsseticBundle[] = 'DiagramBundle';
-    $container->setParameter('assetic.bundles', $aAsseticBundle);*/
-
-  }
+    public function getAlias(): string
+    {
+        return 'diagram';
+    }
 }

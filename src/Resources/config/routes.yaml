@@ -1,0 +1,20 @@
+# Import with the prefix of your choice:
+#
+#   diagram:
+#       resource: '@DiagramBundle/Resources/config/routes.yaml'
+#       prefix: /diagram
+
+benmacha_home:
+    path: /
+    controller: Benmacha\DiagramBundle\Controller\DiagramController::index
+    methods: [GET]
+
+benmacha_diagram_schema:
+    path: /api/schema
+    controller: Benmacha\DiagramBundle\Controller\DiagramController::schema
+    methods: [GET]
+
+benmacha_diagram_managers:
+    path: /api/managers
+    controller: Benmacha\DiagramBundle\Controller\DiagramController::managers
+    methods: [GET]

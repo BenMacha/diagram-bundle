@@ -1,0 +1,22 @@
+services:
+    Benmacha\DiagramBundle\Schema\SchemaExtractor:
+        arguments:
+            - '@doctrine'
+            - '%diagram.entity_managers%'
+            - '%diagram.exclude%'
+            - '%diagram.metadata%'
+        public: true
+
+    Benmacha\DiagramBundle\Controller\DiagramController:
+        arguments:
+            - '@twig'
+            - '@Benmacha\DiagramBundle\Schema\SchemaExtractor'
+            - '%diagram.title%'
+            - '%diagram.access_role%'
+            - '@?security.authorization_checker'
+        tags: ['controller.service_arguments']
+        public: true
+
+    Benmacha\DiagramBundle\Twig\DiagramTwigExtension:
+        arguments: ['@router']
+        tags: ['twig.extension']

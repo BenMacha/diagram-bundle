@@ -1,11 +1,3 @@
-benmacha_home:
-  path: /
-  defaults:
-    _controller: Benmacha\DiagramBundle\Controller\DiagramController::indexAction
-
-
-benmacha_jdl:
-  path: /sample.jdl
-  defaults:
-    _controller: Benmacha\DiagramBundle\Controller\DiagramController::jdlAction
-
+# Kept for backward compatibility with 1.x imports, use ../routes.yaml.
+_diagram:
+    resource: '../routes.yaml'
