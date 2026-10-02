@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- PHPUnit 8.5 → 11 -->
+<phpunit bootstrap="vendor/autoload.php" colors="true">
+    <php>
+        <ini name="error_reporting" value="-1"/>
+        <server name="APP_ENV" value="test" force="true"/>
+        <server name="SHELL_VERBOSITY" value="-1"/>
+    </php>
+    <testsuites>
+        <testsuite name="DiagramBundle">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

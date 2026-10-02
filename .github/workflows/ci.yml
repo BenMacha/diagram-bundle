@@ -1,0 +1,71 @@
+name: CI
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+
+permissions:
+  contents: read
+
+jobs:
+  php:
+    name: PHP ${{ matrix.php }} / Symfony ${{ matrix.symfony }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { php: '7.4', symfony: '5.4.*', orm: '^2.14' }
+          - { php: '8.1', symfony: '5.4.*', orm: '^2.14' }
+          - { php: '8.2', symfony: '6.4.*', orm: '^3.0' }
+          - { php: '8.3', symfony: '7.4.*', orm: '^3.0' }
+          - { php: '8.4', symfony: '7.4.*', orm: '^3.0' }
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: pdo_sqlite
+          coverage: none
+          tools: composer:v2
+
+      - name: Pin versions
+        run: |
+          # Old Symfony / Twig patch releases are flagged by Composer's audit;
+          # the host application controls its own pins.
+          composer config audit.block-insecure false
+
+      - name: Install
+        run: >
+          composer update --prefer-dist --no-progress --no-interaction --no-audit
+          --with "symfony/framework-bundle:${{ matrix.symfony }}"
+          --with "symfony/twig-bundle:${{ matrix.symfony }}"
+          --with "symfony/yaml:${{ matrix.symfony }}"
+          --with "doctrine/orm:${{ matrix.orm }}"
+
+      - name: Lint (PHP 7.2 syntax)
+        if: matrix.php == '7.4'
+        run: find src -name '*.php' -print0 | xargs -0 -n1 php -l > /dev/null
+
+      - name: Tests
+        run: vendor/bin/phpunit
+
+  js:
+    name: Front-end (typecheck, tests, build)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
+      - name: Build is up to date
+        run: |
+          npm run build
+          git diff --exit-code -- src/Resources/public/build || (echo "Run npm run build and commit src/Resources/public/build" && exit 1)

@@ -1,0 +1,3 @@
+diagram:
+    resource: '@DiagramBundle/Resources/config/routes.yaml'
+    prefix: /diagram

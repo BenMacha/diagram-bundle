@@ -1,0 +1,10 @@
+/tests            export-ignore
+/examples         export-ignore
+/assets/tests     export-ignore
+/.github          export-ignore
+/.gitattributes   export-ignore
+/.gitignore       export-ignore
+/phpunit.xml.dist export-ignore
+/phpstan.neon.dist export-ignore
+/.php-cs-fixer.dist.php export-ignore
+/CLAUDE.md        export-ignore

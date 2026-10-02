@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity name="Benmacha\DiagramBundle\Tests\Fixtures\Entity\Book" table="book">
+        <id name="id" type="integer"><generator strategy="AUTO"/></id>
+        <field name="title" type="string" length="200"/>
+        <field name="isbn" type="string" length="13" nullable="true" unique="true"/>
+        <embedded name="price" class="Benmacha\DiagramBundle\Tests\Fixtures\Entity\Money"/>
+        <many-to-one field="author" target-entity="Benmacha\DiagramBundle\Tests\Fixtures\Entity\Author" inversed-by="books">
+            <join-column name="author_id" nullable="false"/>
+        </many-to-one>
+        <many-to-many field="tags" target-entity="Benmacha\DiagramBundle\Tests\Fixtures\Entity\Tag">
+            <join-table name="book_tag"/>
+        </many-to-many>
+        <one-to-one field="publisher" target-entity="Benmacha\DiagramBundle\Tests\Fixtures\Entity\Publisher"/>
+    </entity>
+</doctrine-mapping>
