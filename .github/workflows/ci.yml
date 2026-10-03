@@ -23,7 +23,7 @@ jobs:
           - { php: '8.3', symfony: '7.4.*', orm: '^3.0' }
           - { php: '8.4', symfony: '7.4.*', orm: '^3.0' }
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
 
       - uses: shivammathur/setup-php@v2
         with:
@@ -57,7 +57,7 @@ jobs:
     name: Front-end (typecheck, tests, build)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
       - uses: actions/setup-node@v4
         with:
           node-version: 22
