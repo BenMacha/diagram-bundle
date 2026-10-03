@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><title>Doctrine Diagram — plain JS</title></head>
+<body style="margin:0">
+  <script src="/bundles/diagram/build/diagram.js" defer></script>
+  <doctrine-diagram api="/diagram" theme="auto" style="height:100vh"></doctrine-diagram>
+  <script>
+    addEventListener('DOMContentLoaded', () => {
+      const el = document.querySelector('doctrine-diagram');
+      el.addEventListener('entity-select', (e) => console.log(e.detail));
+    });
+  </script>
+</body>
+</html>
