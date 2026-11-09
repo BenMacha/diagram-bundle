@@ -41,7 +41,7 @@
         "twig/twig": "^2.12 || ^3.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^8.5 || ^9.6 || ^10.5 || ^11.0",
+        "phpunit/phpunit": "^13.4.6",
         "symfony/var-exporter": "^5.4 || ^6.4 || ^7.0"
     },
     "autoload": {
